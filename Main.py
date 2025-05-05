@@ -27,8 +27,8 @@ def GetMatrixList(mesh, voxel_size):
 	
 	return matrix_list
 
-mesh_path = "ranch_mesh.glb"
-point_path = "ranch.ply"
+mesh_path = "yard_mesh.glb"
+point_path = "yard.ply"
 
 scene = trimesh.load(mesh_path, force = "scene", group_material = False)
 mesh_list = scene.geometry
@@ -47,7 +47,7 @@ for mesh_name in mesh_list:
 	print(str(completion) + "% -", mesh_name)
 	
 	mesh = mesh_list[mesh_name]
-	matrix_list = GetMatrixList(mesh, 0.4)
+	matrix_list = GetMatrixList(mesh, 0.1)
 	
 	is_contained = mesh.contains(matrix_list)
 	particle_points = matrix_list[is_contained].cuda()
